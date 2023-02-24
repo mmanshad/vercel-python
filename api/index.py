@@ -29,11 +29,11 @@ class handler(BaseHTTPRequestHandler):
 		self.end_headers()
 
 		dbname = get_database()
-		self.wfile.write("got db object...")
+		message = "got db object...\n"
 
 		collection_name = dbname["user_1_items"]
 
-		self.wfile.write("got db collection object")
+		message += "got db collection object...\n"
 
 		item_1 = {
 		"_id" : "U1IT00001",
@@ -52,14 +52,13 @@ class handler(BaseHTTPRequestHandler):
 		"price" : 36,
 		"item_description" : "brown country eggs"
 		}
-		self.wfile.write(item_2)
+	
 		collection_name.insert_many([item_1,item_2])
 
 		if "name" in dic:
-			message = "Hello, " + dic["name"] + "!"
-
+			message += "Hello, " + dic["name"] + "!"
 		else:
-			message = "Hello, stranger!"
+			message += "Hello, stranger!"
 
 		self.wfile.write(message.encode())
 		return
