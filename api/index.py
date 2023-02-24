@@ -47,6 +47,7 @@ class handler(BaseHTTPRequestHandler):
 		"price" : 36,
 		"item_description" : "brown country eggs"
 		}
+		self.wfile.write(item_2)
 		collection_name.insert_many([item_1,item_2])
 
 		if "name" in dic:
