@@ -29,7 +29,12 @@ class handler(BaseHTTPRequestHandler):
 		self.end_headers()
 
 		dbname = get_database()
+		self.wfile.write("got db object...")
+
 		collection_name = dbname["user_1_items"]
+
+		self.wfile.write("got db collection object")
+
 		item_1 = {
 		"_id" : "U1IT00001",
 		"item_name" : "Blender",
